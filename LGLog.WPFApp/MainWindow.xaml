@@ -25,8 +25,16 @@
             </Grid.ColumnDefinitions>
             <Image Source="{Binding ImageSource, Converter={StaticResource MatToBitmapSourceConverter}, UpdateSourceTrigger=PropertyChanged}" />
             <StackPanel Grid.Column="1">
-                <TextBlock Text="{Binding OK}"/>
-                <TextBlock Text="{Binding NG}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="OK: " />
+                    <TextBlock Text="{Binding OK}"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="NG: " />
+                    <TextBlock Text="{Binding NG}"
+                               VerticalAlignment="Center" />
+                </StackPanel>
             </StackPanel>
         </Grid>
         <Button Width="200"
