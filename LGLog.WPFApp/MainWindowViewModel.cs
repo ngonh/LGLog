@@ -81,7 +81,7 @@ namespace LGLog.WPFApp
         }
         private bool IsOk(Mat imageSource)
         {
-            string imageTemplatePath = "D:\\Workspace\\NetCoreProject\\LGLog\\LGLog.WPFApp\\Images\\NG.png";
+            string imageTemplatePath = "Images/NG.png";
             if (imageSource != null) 
             imageSource.ConvertTo(imageSource, MatType.CV_8U);
             Mat tem = new Mat(imageTemplatePath, ImreadModes.Grayscale);
@@ -89,8 +89,7 @@ namespace LGLog.WPFApp
             tem.ConvertTo(tem, MatType.CV_8U);
             Cv2.MatchTemplate(imageSource, tem, result, TemplateMatchModes.CCoeffNormed);
             Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out OpenCvSharp.Point maxLox);
-            bool check = maxVal > 0.91d;
-            return check;
+            return !(maxVal > 0.91d);
         }
         #endregion
 
